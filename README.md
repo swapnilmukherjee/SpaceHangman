@@ -36,6 +36,10 @@ Space Hangman is a web-based game created using Flask where players attempt to g
 - **HTML/CSS**: For structuring and styling the game interface.
 - **JavaScript** (in the future): For enhancing interactivity and features.
 
-## Contributing 🤝
+## Contributors 🤝
+
+- [Swapnil Mukherjee](https://github.com/swapnilmukherjee)
+- Jayanth Koduri
+- Sandya Rani Prasadam
 
 Feel free to fork this repository, make changes, and open a pull request if you think you've made improvements that are in line with the objective of this game. All contributions are welcome!
