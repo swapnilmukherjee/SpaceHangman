@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'GalaxyFont';
+    src: url('/static/fonts/Galaxy Font.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SubFont';
+    src: url('/static/fonts/Sub Font.otf') format('opentype');
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a2e;
+    color: #e6e6e6;
+    text-align: center; /* Centrally aligning everything in the body */
+}
+
+.container {
+    max-width: 750px; /* Increased size for better central visibility */
+    margin: 50px auto;
+    padding: 25px; /* Increased padding */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4); /* Increased shadow slightly */
+}
+
+h1 {
+    font-family: 'GalaxyFont', 'Arial', sans-serif;
+    text-align: center;
+    font-size: 3.1em; /* Increased size by 25% */
+    color: #ffffff;
+}
+
+h2, h3 {
+    font-family: 'SubFont', 'Arial', sans-serif;
+    color: #ffffff;
+    font-size: 1.9em; /* Increased size by 25% */
+}
+
+input[type="text"] {
+    font-family: 'SubFont', 'Arial', sans-serif;
+    width: 87.5%; /* 70% + 25% of 70% = 87.5% */
+    padding: 12.5px; /* Increased padding */
+    margin: 12.5px auto; /* Increased margin */
+    display: block;
+    border-radius: 6.25px; /* Increased border-radius */
+    border: none;
+    font-size: 1.25em; /* Increased font size by 25% */
+}
+
+button {
+    font-family: 'SubFont', 'Arial', sans-serif;
+    display: block;
+    width: 100%;
+    padding: 12.5px; /* Increased padding */
+    margin: 12.5px 0; /* Increased margin */
+    background-color: #f5ca3e;
+    border: none;
+    border-radius: 6.25px; /* Increased border-radius */
+    font-size: 1.25em; /* Increased font size by 25% */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e6b536;
+}
+
+.hint {
+    font-family: 'SubFont', 'Arial', sans-serif;
+    margin-top: 25px; /* Increased margin-top */
+    padding: 12.5px; /* Increased padding */
+    border-radius: 6.25px; /* Increased border-radius */
+}
+
+/* Video background styles */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -1;
+}

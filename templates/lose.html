@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman - Defeat!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="space-bg">
+    <div class="container">
+        <h1>Oh no, Astronaut!</h1>
+        <p>You couldn't guess the word: <strong>{{ word }}</strong></p>
+        <p>The spaceship encountered a cosmic mishap...</p>
+        <a href="{{ url_for('index') }}" class="btn">Try Again</a>
+    </div>
+</body>
+</html>
