@@ -2,8 +2,8 @@
 
 Welcome to Space Hangman - a galactic twist on the classic game of Hangman! Dive into the universe and test your knowledge of space-themed words.
 
-[![Space Hangman Game Demo](https://img.youtube.com/vi/JxDZO2PMoBQ/0.jpg)](https://youtu.be/JxDZO2PMoBQ)
-*Click the image above to watch the game demo on YouTube.*
+[Watch the game demo on YouTube.](https://youtu.be/JxDZO2PMoBQ)
+
 
 ## Game Objective and Rules 🎯
 
