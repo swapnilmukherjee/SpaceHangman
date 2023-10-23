@@ -2,44 +2,57 @@
 
 Welcome to Space Hangman - a galactic twist on the classic game of Hangman! Dive into the universe and test your knowledge of space-themed words.
 
-## Overview 📖
+[![Space Hangman Game Demo](https://img.youtube.com/vi/JxDZO2PMoBQ/0.jpg)](https://youtu.be/JxDZO2PMoBQ)
+*Click the image above to watch the game demo on YouTube.*
 
-Space Hangman is a web-based game created using Flask where players attempt to guess a space-themed word, letter by letter. Players get a limited number of attempts, and with each incorrect guess, a part of a spaceship gets damaged. Guess the word correctly to save the spaceship from destruction!
+## Game Objective and Rules 🎯
 
-## Features 🚀
+**Objective**: Guess the space-themed word before running out of attempts!
 
-- **Galactic Word Pool**: Guess from a wide variety of space-themed words, from 'astronomy' to 'wormhole'.
-- **Hints**: Stuck on a word? Use the hint feature to get a definition of the word you're trying to guess.
-- **Dynamic Feedback**: The game keeps track of your guesses, showing your progress and the number of attempts left.
-- **Immersive Experience**: With a space-themed background video and ambient music, players will truly feel they are in the vastness of space.
-
-## How to Play 🎮
-
-1. Open the game, and you'll be presented with blank spaces representing the letters of the word you need to guess.
+**Rules**:
+1. Players are presented with blank spaces representing the letters of a word.
 2. Guess a letter by entering it into the input box.
-3. If the letter is in the word, it will appear in the correct spaces. If not, your number of attempts will decrease.
-4. Use the "Hint" button if you're stuck and need some help.
-5. Keep guessing until you either guess the entire word or run out of attempts.
-6. You need to click "Play Again" to start the game. We are currently working on the bug.
-
-## Setup and Installation ⚙️
-
-1. Clone this repository: `git clone https://github.com/swapnilmukherjee/Space-Hangman.git`
-2. Navigate to the project directory: `cd Space-Hangman`
-3. Install the required dependencies: `pip install -r requirements.txt`
-4. Run the game: `python app.py`
-5. Open a web browser and go to `http://127.0.0.1:5000/` to play the game.
+3. If the letter is in the word, it appears in the correct spaces.
+4. For each incorrect guess, the number of attempts decreases.
+5. Use the "Hint" button if stuck.
+6. Win by guessing the word correctly before attempts run out.
 
 ## Technologies Used 🛠
 
 - **Python/Flask**: Backend framework to serve the game.
 - **HTML/CSS**: For structuring and styling the game interface.
-- **JavaScript** (in the future): For enhancing interactivity and features.
+- **JavaScript**: Adds interactivity, enhancing user experience.
 
-## Contributors 🤝
+## Setup and Deployment ⚙️
+
+1. Clone this repository: `git clone https://github.com/swapnilmukherjee/Space-Hangman.git`
+2. Navigate to the project directory: `cd Space-Hangman`
+3. Install the required dependencies: `pip install -r requirements.txt`
+4. Run the game: `python app.py`
+5. Open a web browser and visit `http://127.0.0.1:5000/` to play.
+
+## Credits and Third-party Assets 🙏
+
+- **Background Video**: Canva
+- **Ambient Music**: YouTube NCS
+- **Word Definitions API**: Datamuse API 
+
+## Reflection on Design and Development 🌟
+
+Building Space Hangman was a journey filled with learning and discovery. From conceptualizing the game to deploying the final product, every stage posed unique challenges and opportunities.
+
+One of the challenges we faced was ensuring the game maintained a balance between being too easy and too hard. By leveraging a comprehensive space-themed word list and allowing hints, we aimed to keep players engaged and challenged, without causing undue frustration.
+
+A crucial decision was to adopt Flask for the backend, which enabled quick iterations and rapid development. The introduction of JavaScript provided an interactive dimension to the gameplay, making it more dynamic and engaging. Furthermore, integrating an external API for word definitions added a layer of depth to the gameplay, offering players an educational dimension.
+
+In terms of what didn't work, we initially considered adding more interactive elements like disappearing hints, an animated hangman figure, etc., using JavaScript. However, we deferred this enhancement for future iterations due to time constraints and a desire to maintain a straightforward user experience.
+
+Among the lessons learned, the importance of user feedback stood out. Early testers of the game provided invaluable insights, leading to crucial modifications, particularly in the UI design.
+
+In conclusion, Space Hangman is a testament to the power of collaboration, iterative development, and feedback. It serves as a reminder that even simple games can offer profound lessons in software development.
+
+## Contributors 🙌
 
 - [Swapnil Mukherjee](https://github.com/swapnilmukherjee)
-- Jayanth Koduri
+- Jayanth Kodur
 - Sandya Rani Prasadam
-
-Feel free to fork this repository, make changes, and open a pull request if you think you've made improvements that are in line with the objective of this game. All contributions are welcome!
