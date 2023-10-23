@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import random
 import requests
 
 app = Flask(__name__)
+app.secret_key = 'GiveUsFullMarksPleaseeeeeeee'  # A secret key is required for the session to work
 
 words = [
     "astronomy", "universe", "galaxy", "meteor", "telescope", "satellite", "star", "planet",
@@ -19,18 +20,13 @@ words = [
     "revolution", "apogee", "perigee", "spacestation", "oort", "kuiper", "hubble", "spectroscope"
 ]
 
-current_word = ""
-guessed_word = ""
 max_attempts = 6
-attempts_left = max_attempts
-hint = None
 
 def start_new_game():
-    global current_word, guessed_word, attempts_left, hint
-    current_word = random.choice(words)
-    guessed_word = "_ " * len(current_word)
-    attempts_left = max_attempts
-    hint = None
+    session['current_word'] = random.choice(words)
+    session['guessed_word'] = "_ " * len(session['current_word'])
+    session['attempts_left'] = max_attempts
+    session['hint'] = None
 
 def fetch_meaning(word):
     url = f"https://api.datamuse.com/words?sp={word}&md=d"
@@ -42,46 +38,41 @@ def fetch_meaning(word):
 
 @app.route("/")
 def index():
-    global hint
-    return render_template("index.html", guessed_word=guessed_word, attempts_left=attempts_left, hint=hint)
+    # If the game hasn't started yet, initialize it
+    if 'current_word' not in session:
+        start_new_game()
+    return render_template("index.html", guessed_word=session['guessed_word'], attempts_left=session['attempts_left'], hint=session['hint'])
 
 @app.route("/guess", methods=["POST"])
 def guess():
-    global guessed_word, attempts_left, hint
-    hint = None  # Clear the hint after a guess is made
+    guessed_letter = request.form["guess"].strip().lower()
+    # Check if the user actually entered a letter
+    if not guessed_letter or len(guessed_letter) != 1:
+        return redirect(url_for("index"))
 
-    if request.method == "POST":
-        guessed_letter = request.form["guess"].strip().lower()
+    new_guessed_word = []
+    for idx, letter in enumerate(session['current_word']):
+        if letter == guessed_letter or session['guessed_word'][idx*2] != "_":
+            new_guessed_word.append(letter)
+        else:
+            new_guessed_word.append("_")
+    session['guessed_word'] = " ".join(new_guessed_word)
 
-        # Check if the user actually entered a letter
-        if not guessed_letter or len(guessed_letter) != 1:
-            return redirect(url_for("index"))
+    # If the guessed letter is not in the current word, decrement attempts
+    if guessed_letter not in session['current_word']:
+        session['attempts_left'] -= 1
 
-        # Build a new version of guessed_word with the guessed letter filled in
-        new_guessed_word = []
-        for idx, letter in enumerate(current_word):
-            if letter == guessed_letter or guessed_word[idx*2] != "_":
-                new_guessed_word.append(letter)
-            else:
-                new_guessed_word.append("_")
-        guessed_word = " ".join(new_guessed_word)
-
-        # If the guessed letter is not in the current word, decrement attempts
-        if guessed_letter not in current_word:
-            attempts_left -= 1
-
-        # Check game status
-        if "_" not in guessed_word:
-            return render_template("win.html", word=current_word)
-        elif attempts_left == 0:
-            return render_template("lose.html", word=current_word)
+    # Check game status
+    if "_" not in session['guessed_word']:
+        return render_template("win.html", word=session['current_word'])
+    elif session['attempts_left'] == 0:
+        return render_template("lose.html", word=session['current_word'])
 
     return redirect(url_for("index"))
 
 @app.route("/hint", methods=["POST"])
 def get_hint():
-    global hint
-    hint = fetch_meaning(current_word)
+    session['hint'] = fetch_meaning(session['current_word'])
     return redirect(url_for("index"))
 
 @app.route("/play_again", methods=["POST"])
@@ -90,5 +81,4 @@ def play_again():
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
-    start_new_game()
     app.run(debug=True)
