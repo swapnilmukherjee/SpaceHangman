@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <audio loop autoplay>
+    <audio loop autoplay id="myAudio">
+
         <source src="{{ url_for('static', filename='audios/Space Music.mp3') }}" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -21,7 +22,7 @@
         <h1>Space Hangman</h1>
         <h2 class="subfont">Guess the Word: {{ guessed_word }}</h2>
         <h3 class="subfont">Attempts left: {{ attempts_left }}</h3>
-        
+
         {% if hint %}
         <div class="hint subfont">
             <strong>Hint:</strong> {{ hint }}
@@ -41,6 +42,16 @@
             <button type="submit" class="subfont">Play Again</button>
         </form>
     </div>
+
+    <script type="text/javascript">
+        document.querySelector('body').addEventListener('click', function() {
+   var audio = document.getElementById("myAudio");
+   audio.play();
+    });
+
+    </script>
 </body>
 
-</html>
+
+
+
